@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Cloud Storage</title>
-    </head>
-    <body>
-        <ul>
-            {% for file in files %}
-            <li>{{ file.name }}</li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% extends "files/site.html" %}
+{% block title %} All files {% endblock %}
+{% block body %}
+{% if files %}
+<ul>
+    {% for file in files %}
+    <li>{{ file.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>Please upload some files!</p>
+{% endif %}
+{% endblock %}
