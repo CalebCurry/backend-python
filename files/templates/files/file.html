@@ -1,0 +1,8 @@
+{% extends "files/site.html" %}
+{% block title %} File details {% endblock %}
+{% block body %}
+    <h1>{{file.name}}</h1>
+    <p>{{file.name}}</p>
+    <p>type: {{file.type}}</p>
+    <a href="{% url 'files' %}">All files</a>
+{% endblock %}

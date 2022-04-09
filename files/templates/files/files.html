@@ -4,7 +4,7 @@
 {% if files %}
 <ul>
     {% for file in files %}
-    <li>{{ file.name }}</li>
+    <li><a href="{% url 'file' file.id %}">{{ file.name }}</a></li>
     {% endfor %}
 </ul>
 {% else %}
