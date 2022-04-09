@@ -2,7 +2,6 @@
 {% block title %} File details {% endblock %}
 {% block body %}
     <h1>{{file.name}}</h1>
-    <p>{{file.name}}</p>
-    <p>type: {{file.type}}</p>
+    <p>type: {{file.file_type}}</p>
     <a href="{% url 'files' %}">All files</a>
 {% endblock %}
