@@ -10,6 +10,7 @@
         <p>Uploaded: {{file.upload_timestamp}}</p>
         <button>Update</button>
     </form>
+    <img src={{file.file.url}}/>
     <form action="{% url 'delete' file.id %}"><button>Delete</button></form>
     <a href="{% url 'files' %}">All files</a>
 {% endblock %}
