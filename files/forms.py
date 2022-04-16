@@ -5,7 +5,7 @@ from .models import File
 class UploadForm(ModelForm):
     class Meta:
         model = File
-        fields = ['name', 'file', 'file_type']
+        fields = ['name', 'file']
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'filename'})
         }

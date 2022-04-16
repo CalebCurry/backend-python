@@ -5,8 +5,6 @@
         {% csrf_token %}
         <label for="name">File name:</label>
         <input type="text" name="name" id="name" placeholder={{file.name}} />
-        <label for="type">File type:</label>
-        <input type="text" name="type" id="type" placeholder={{file.file_type}} />
         <p>Uploaded: {{file.upload_timestamp}}</p>
         <button>Update</button>
     </form>
