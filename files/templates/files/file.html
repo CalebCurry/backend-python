@@ -4,7 +4,7 @@
     <form action="{% url 'edit' file.id %}" method="POST">
         {% csrf_token %}
         <label for="name">File name:</label>
-        <input type="text" name="name" id="name" placeholder={{file.name}} />
+        <input type="text" name="name" id="name" placeholder="{{file.name}}"/>
         <p>Uploaded: {{file.upload_timestamp}}</p>
         <button>Update</button>
     </form>
