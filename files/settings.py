@@ -80,7 +80,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'Files-env-1.eba-2aj5mhc5.us-east-2.e
 
 INSTALLED_APPS = [
     'rest_framework',
-    'rest_framework_simplejwt.token_blacklist'
+    'rest_framework_simplejwt.token_blacklist',
     'files',
     'django.contrib.admin',
     'django.contrib.auth',
