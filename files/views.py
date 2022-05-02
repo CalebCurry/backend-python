@@ -18,10 +18,11 @@ def index(request):
     return render(request, 'files/index.html')
 
 @api_view(['GET', 'POST'])
-#@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def files(request, format=None):
     if request.method == 'GET':
-        data = File.objects.all()
+        data = request.user.file_set.all()
+        #data = File.objects.all()
         serializer = FileSerializer(data, many=True)
         return Response({'files': serializer.data})
     
@@ -36,10 +37,11 @@ def files(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PATCH', 'DELETE'])
-#@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def file(request, file_id, format=None):
     try:
-        data = File.objects.get(pk=file_id)
+        data = request.user.file_set.get(pk=file_id)
+        #data = File.objects.get(pk=file_id)
     except File.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
