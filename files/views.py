@@ -2,7 +2,7 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
 
 from files.forms import UploadForm
-from files.serializers import FileSerializer
+from files.serializers import FileSerializer, UserSerializer
 from .models import File
 
 from django.conf import settings
@@ -27,10 +27,11 @@ def files(request, format=None):
         return Response({'files': serializer.data})
     
     elif request.method == 'POST':
-        serializer = FileSerializer(data=request.data)
+        serializer = FileSerializer(data=request.data, context={'request': request})
+        print(request.data)
         if serializer.is_valid():
             settings.AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', 
-            'ContentDisposition': 'attachment; filename="' + request.FILES['file'].name + '"'}
+            'ContentDisposition': 'attachment; filename="' + request.data.get('file').name + '"'}
         
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -58,3 +59,10 @@ def file(request, file_id, format=None):
     elif request.method == 'DELETE':
         data.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+def register(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(status=status.HTTP_201_CREATED)

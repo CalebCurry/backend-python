@@ -8,7 +8,7 @@
         <p>Uploaded: {{file.upload_timestamp}}</p>
         <button>Update</button>
     </form>
-    <a href={{file.file.url}} download /> Download </a>
+    <a href={{file.file.url}} download > Download </a>
     <form action="{% url 'delete' file.id %}"><button>Delete</button></form>
     <a href="{% url 'files' %}">All files</a>
 {% endblock %}

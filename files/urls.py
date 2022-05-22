@@ -26,7 +26,8 @@ urlpatterns = [
     path('admin-site/', admin.site.urls),
     path('', views.index, name='index'),
     path('api/files/', views.files, name='files'),
-    path('api/files/<int:file_id>', views.file, name='file')
+    path('api/files/<int:file_id>', views.file, name='file'),
+    path('api/register/', views.register, name='register')
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
