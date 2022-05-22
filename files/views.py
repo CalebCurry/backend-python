@@ -31,8 +31,7 @@ def files(request, format=None):
         print(request.data)
         if serializer.is_valid():
             settings.AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', 
-            'ContentDisposition': 'attachment; filename="' + request.data.get('file').name + '"'}
-        
+			'ContentDisposition': 'attachment; filename="' + request.FILES['file'].name + '"'}
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
